@@ -1,0 +1,6 @@
+{
+  "name": "Student Career Hub",
+  "description": "A comprehensive career development platform for students featuring career exploration, internship & job tracking, skill roadmaps, resume studio, and interview prep.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
