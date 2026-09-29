@@ -7,6 +7,8 @@ import { RoadmapGenerator } from './components/RoadmapGenerator';
 import { ResumeStudio } from './components/ResumeStudio';
 import { InterviewPrep } from './components/InterviewPrep';
 import { AddApplicationModal } from './components/AddApplicationModal';
+import { ExportDatasetModal } from './components/ExportDatasetModal';
+import { CareerChatbot } from './components/CareerChatbot';
 import { Footer } from './components/Footer';
 import { INITIAL_APPLICATIONS, DEFAULT_ROADMAP, CAREER_ROLES } from './data/careerData';
 import { JobApplication, RoadmapMilestone, ApplicationStatus, CareerRole } from './types';
@@ -14,6 +16,7 @@ import { JobApplication, RoadmapMilestone, ApplicationStatus, CareerRole } from 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('explore');
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
+  const [isExportModalOpen, setIsExportModalOpen] = useState<boolean>(false);
 
   // Load persistent applications
   const [applications, setApplications] = useState<JobApplication[]>(() => {
@@ -99,6 +102,7 @@ export default function App() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
         onOpenAddModal={() => setIsAddModalOpen(true)}
+        onOpenExportModal={() => setIsExportModalOpen(true)}
         applicationsCount={applications.length}
       />
 
@@ -153,6 +157,15 @@ export default function App() {
         onClose={() => setIsAddModalOpen(false)}
         onAdd={handleAddApplication}
       />
+
+      {/* Export AI Training Dataset Modal */}
+      <ExportDatasetModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+      />
+
+      {/* Floating AI Career Chatbot */}
+      <CareerChatbot />
 
       {/* Quiet Footer */}
       <Footer />

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Compass, Briefcase, Map, FileText, MessageSquare, Plus } from 'lucide-react';
+import { Compass, Briefcase, Map, FileText, MessageSquare, Plus, Database } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
   onOpenAddModal: () => void;
+  onOpenExportModal: () => void;
   applicationsCount: number;
 }
 
@@ -12,6 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   onTabChange,
   onOpenAddModal,
+  onOpenExportModal,
   applicationsCount
 }) => {
   const navItems = [
@@ -65,6 +67,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Zone 3: 1-2 Primary Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={onOpenExportModal}
+              className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors whitespace-nowrap"
+            >
+              <Database className="w-3.5 h-3.5 text-sky-600" />
+              <span>Export AI Data</span>
+            </button>
+
             <button
               onClick={onOpenAddModal}
               className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 rounded-lg hover:bg-slate-800 active:scale-95 transition-all shadow-xs whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900"
